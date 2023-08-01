@@ -75,6 +75,14 @@ export default function HomePage() {
     }
   }
 
+  const transfer = async() => {
+    if (atm) {
+      let tx = await atm.transfer("0x70997970C51812dc3A010C7d01b50e0d17dc79C8", 1);
+      await tx.wait()
+      getBalance();
+    }
+  }
+
   const initUser = () => {
     // Check to see if user has Metamask
     if (!ethWallet) {
@@ -94,8 +102,15 @@ export default function HomePage() {
       <div>
         <p>Your Account: {account}</p>
         <p>Your Balance: {balance}</p>
-        <button onClick={deposit}>Deposit 1 ETH</button>
+      <div>
+        <button onClick={deposit}>Submit 1 ETH</button>
+      </div>
+      <div>
         <button onClick={withdraw}>Withdraw 1 ETH</button>
+      </div>
+      <div>
+        <button onClick={transfer}>Transfer 1 ETH</button>
+      </div>
       </div>
     )
   }
@@ -104,14 +119,19 @@ export default function HomePage() {
 
   return (
     <main className="container">
-      <header><h1>Welcome to the Metacrafters ATM!</h1></header>
+      <header><h1>Welcome to the Nisha ATM-Metacrafters!</h1></header>
       {initUser()}
       <style jsx>{`
         .container {
-          text-align: center
+            width: 1500px;
+            height: 800px;
+            background-color:white;
+            text-align: center;
+            color:  purple;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
       `}
       </style>
     </main>
   )
-}
+}```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
